@@ -10,9 +10,9 @@ Clone this repository. Load the files into the microcontroller
 - Adafruit Gemma M0
 - Individually addressible RGB Led lights
 
-##Project Idea
-The goal of this project is be able to multi-funcitonal RGB Led lights quickly and easily. The entire setup process should take under 15 minutes.
-The lights should have multiple interfaces. One based on physical buttons that control the color, brightness, and mode of the lights. Another interface is Web-Based such as to allow remote  control.
+## Project Idea
+The goal of this project is be able to control multi-funcitonal RGB Led lights quickly and easily. The entire setup process should take under 15 minutes.
+The lights should have multiple interfaces. One based on physical buttons that control the color, brightness, and mode of the lights. Another interface is Web-Based such as to allow remote  control. This can be achieved with an actual remote control or via a Web interface
 
 ### Physical Interface
 - 3 buttons
