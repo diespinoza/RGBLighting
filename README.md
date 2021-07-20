@@ -17,7 +17,9 @@ The lights should have multiple interfaces. One based on physical buttons that c
 ### Physical Interface
 - 3 buttons
   - 1 Button that changes mode
+    - When this button is held down, the mode will change continously in intervals of 1-2 secconds. When the button is released, the mode is set. A single press would therefore have to hold down the button for 1-2 seconds. One of the light modes is with all the lights off.
   - 1 button that changes brightness
+    - This button should behave in a similar way to the mode select button. The light will go from minimum brightness to maximum brightness in steps. The button must be continously held down to cycle through the modes.
   - 1 button for extra functionality
 - 1 switch for power
 - 1 state indicator LED 
