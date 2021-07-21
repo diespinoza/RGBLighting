@@ -21,6 +21,7 @@ The lights should have multiple interfaces. One based on physical buttons that c
   - 1 button that changes brightness
     - This button should behave in a similar way to the mode select button. The light will go from minimum brightness to maximum brightness in steps. The button must be continously held down to cycle through the modes.
   - 1 button for extra functionality
+    - This button could enable "special" modes. For example, when pressed and held at the same time as the first button is pressed, the colors will shift in hue
 - 1 switch for power
 - 1 state indicator LED 
 
