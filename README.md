@@ -11,23 +11,19 @@ Clone this repository. Load the files into the microcontroller
 - Individually addressible RGB Led lights
 
 ## Project Idea
-The goal of this project is be able to control multi-funcitonal RGB Led lights quickly and easily. The entire setup process should take under 15 minutes.
-The lights should have multiple interfaces. One based on physical buttons that control the color, brightness, and mode of the lights. Another interface is Web-Based such as to allow remote  control. This can be achieved with an actual remote control or via a Web interface
+The goal of this project is be able to control multi-funcitonal RGB Led lights quickly and easily. The entire setup process should take under 10 minutes.
+The lights are controlled by a single button. This minimizes the hardware complexity and makes it easy to prototype in a breadboard. The single button will serve as the controll for the lights
 
 ### Physical Interface
-- 3 buttons
-  - 1 Button that changes mode
-    - When this button is held down, the mode will change continously in intervals of 1-2 secconds. When the button is released, the mode is set. A single press would therefore have to hold down the button for 1-2 seconds. One of the light modes is with all the lights off.
-  - 1 button that changes brightness
-    - This button should behave in a similar way to the mode select button. The light will go from minimum brightness to maximum brightness in steps. The button must be continously held down to cycle through the modes.
-  - 1 button for extra functionality
-    - This button could enable "special" modes. For example, when pressed and held at the same time as the first button is pressed, the colors will shift in hue
-- 1 switch for power
+- 1 buttons
+  - Press once and hold 
+     - The mode will change one by one in intervals of 1-2 secconds. When the button is released, the mode is set.
+  - Press twice and hold
+    - Double-click the button the minimum brightness to maximum brightness in steps. The button must be continously held down to cycle through the modes.
+  - Press 3 times and hold
+    - This will immediately turn the entire stip off
 - 1 state indicator LED 
-
-### Web Interface
-- buttons
-- data graphs
+  -  This tells LED mirrors the button presses so that you know the arduino is reading your input 
 
 ### Light Modes and Functionality
 - RGB Rainbow
