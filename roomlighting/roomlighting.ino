@@ -16,10 +16,10 @@
 CRGB leds[NUM_LEDS];
 
 void setup() { 
-	Serial.begin(57600);
-	Serial.println("resetting");
-	LEDS.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(Typical8mmPixel); //Typical8mmPixel or TypicalPixelString 
-	LEDS.setBrightness(BRIGHTNESS);
+  Serial.begin(57600);
+  Serial.println("resetting");
+  LEDS.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(Typical8mmPixel); //Typical8mmPixel or TypicalPixelString 
+  LEDS.setBrightness(BRIGHTNESS);
 }
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
@@ -29,14 +29,14 @@ uint8_t gCurrentPatternNumber = 0; // Index number of which pattern is current
 uint8_t gHue = 0; // rotating "base color" used by many of the patterns
 
 void loop() { 
- /* uint8_t hue = 0;
-  cylon();
-  delay(1000);
-  rainbow();
-  delay(1000);
+  /* uint8_t hue = 0;
+     cylon();
+     delay(1000);
+     rainbow();
+     delay(1000);
   //hue++;
-*/
-// Call the current pattern function once, updating the 'leds' array
+   */
+  // Call the current pattern function once, updating the 'leds' array
   gPatterns[gCurrentPatternNumber]();
 
   // send the 'leds' array out to the actual LED strip
@@ -48,7 +48,7 @@ void loop() {
   EVERY_N_MILLISECONDS( 20 ) { gHue++; } // slowly cycle the "base color" through the rainbow
   EVERY_N_SECONDS( 10 ) { nextPattern(); } // change patterns periodically
 
-  
+
 }
 
 #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))
@@ -61,7 +61,7 @@ void nextPattern(){
 void fadeall(){
   for(int i = 0; i < NUM_LEDS; i++){
     leds[i].nscale8(250); 
-    } 
+  } 
 }
 
 
@@ -94,7 +94,7 @@ void cylon(){
     // Wait a little bit before we loop around and do it again
     delay(10);
   }   
-  
+
 }
 
 void rainbow() 
@@ -102,4 +102,11 @@ void rainbow()
   // FastLED's built-in rainbow generator
   fill_rainbow( leds, NUM_LEDS, gHue, 7);
   FastLED.show();
+}
+
+
+
+void breatheffect(){
+
+
 }
