@@ -70,28 +70,22 @@ void cylon(){
   Serial.print("x");
   // First slide the led in one direction
   for(int i = 0; i < NUM_LEDS; i++) {
-    // Set the i'th led to red 
-    leds[i] = CHSV(hue++, 255, 255);
-    // Show the leds
+    leds[i] = CHSV(hue++, 255, BRIGHTNESS);
     FastLED.show(); 
     // now that we've shown the leds, reset the i'th led to black
     // leds[i] = CRGB::Black;
     fadeall();
-    // Wait a little bit before we loop around and do it again
     delay(10);
   }
   Serial.print("x");
 
   // Now go in the other direction.  
   for(int i = (NUM_LEDS)-1; i >= 0; i--) {
-    // Set the i'th led to red 
-    leds[i] = CHSV(hue++, 255, 255);
-    // Show the leds
+    leds[i] = CHSV(hue++, 255, BRIGHTNESS);
     FastLED.show();
     // now that we've shown the leds, reset the i'th led to black
     // leds[i] = CRGB::Black;
     fadeall();
-    // Wait a little bit before we loop around and do it again
     delay(10);
   }   
 
@@ -101,7 +95,8 @@ void rainbow()
 {
   // FastLED's built-in rainbow generator
   fill_rainbow( leds, NUM_LEDS, gHue, 7);
-  FastLED.show();
+  LEDS.setBrightness(BRIGHTNESS);
+  //FastLED.show();
 }
 
 
@@ -110,7 +105,7 @@ void breathEffect(){
   int a = millis();
   byte b = triwave8(a/15);
   byte breath = ease8InOutApprox(b);
-  breath = map(breath, 0, 255, 0, BRIGHTNESS);
+  breath = map(breath, 0, 255, 10, BRIGHTNESS);
   fill_solid(leds, NUM_LEDS, CHSV(gHue, 255, breath));
   Serial.println(breath);
   //adjust_gamma();
