@@ -2,7 +2,7 @@
 
 // How many leds in your strip?
 #define NUM_LEDS 50 
-#define BRIGHTNESS 96
+#define BRIGHTNESS 200
 
 // For led chips like Neopixels, which have a data line, ground, and power, you just
 // need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
@@ -24,7 +24,7 @@ void setup() {
 
 // List of patterns to cycle through.  Each is defined as a separate function below.
 typedef void (*SimplePatternList[])();
-SimplePatternList gPatterns = { rainbow, cylon};
+SimplePatternList gPatterns = { breathEffect, rainbow, cylon};
 uint8_t gCurrentPatternNumber = 0; // Index number of which pattern is current
 uint8_t gHue = 0; // rotating "base color" used by many of the patterns
 
@@ -106,7 +106,32 @@ void rainbow()
 
 
 
-void breatheffect(){
+void breathEffect(){
+  int a = millis();
+  byte b = triwave8(a/15);
+  byte breath = ease8InOutApprox(b);
+  breath = map(breath, 0, 255, 0, BRIGHTNESS);
+  fill_solid(leds, NUM_LEDS, CHSV(gHue, 255, breath));
+  Serial.println(breath);
+  //adjust_gamma();
+}
 
 
+void adjust_gamma()
+{
+  for (uint16_t i = 0; i < NUM_LEDS; i++)
+  {
+    leds[i].r = dim8_video(leds[i].r);
+    leds[i].g = dim8_video(leds[i].g);
+    leds[i].b = dim8_video(leds[i].b);
+  }
+}
+
+void blink(){
+  fill_solid(leds, NUM_LEDS, CHSV(gHue, 255, BRIGHTNESS));
+  FastLED.show();   
+  delay(300);
+  fill_solid(leds, NUM_LEDS, CHSV(gHue, 0, 50));
+  FastLED.show();    
+  delay(300);
 }
