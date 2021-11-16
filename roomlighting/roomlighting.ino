@@ -38,9 +38,14 @@ void loop() {
    */
   // Call the current pattern function once, updating the 'leds' array
   gPatterns[gCurrentPatternNumber]();
+  //gPatterns[2]();
+  Serial.print("Current Pattern number is: ");
+  Serial.print(gCurrentPatternNumber);
+  Serial.print("\t Current gHue is: ");
+  Serial.println(gHue);
 
   // send the 'leds' array out to the actual LED strip
-  FastLED.show();  
+ // FastLED.show();  
   // insert a delay to keep the framerate modest
   FastLED.delay(1000/120); 
 
@@ -67,15 +72,13 @@ void fadeall(){
 
 void cylon(){
   static uint8_t hue = 0;
-  Serial.print("x");
+  Serial.print(hue);
   // First slide the led in one direction
   for(int i = 0; i < NUM_LEDS; i++) {
     leds[i] = CHSV(hue++, 255, BRIGHTNESS);
     FastLED.show(); 
-    // now that we've shown the leds, reset the i'th led to black
-    // leds[i] = CRGB::Black;
     fadeall();
-    delay(10);
+    delay(12);
   }
   Serial.print("x");
 
@@ -83,19 +86,17 @@ void cylon(){
   for(int i = (NUM_LEDS)-1; i >= 0; i--) {
     leds[i] = CHSV(hue++, 255, BRIGHTNESS);
     FastLED.show();
-    // now that we've shown the leds, reset the i'th led to black
-    // leds[i] = CRGB::Black;
     fadeall();
-    delay(10);
+    delay(12);
   }   
-
+  Serial.println("x");
 }
 
 void rainbow() 
 {
   // FastLED's built-in rainbow generator
   fill_rainbow( leds, NUM_LEDS, gHue, 7);
-  LEDS.setBrightness(BRIGHTNESS);
+  LEDS.setBrightness(BRIGHTNESS/4);
   //FastLED.show();
 }
 
@@ -107,7 +108,7 @@ void breathEffect(){
   byte breath = ease8InOutApprox(b);
   breath = map(breath, 0, 255, 10, BRIGHTNESS);
   fill_solid(leds, NUM_LEDS, CHSV(gHue, 255, breath));
-  Serial.println(breath);
+  //Serial.println(breath);
   //adjust_gamma();
 }
 
