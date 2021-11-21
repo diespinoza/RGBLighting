@@ -51,7 +51,7 @@ void loop() {
 
   // do some periodic updates
   EVERY_N_MILLISECONDS( 20 ) { gHue++; } // slowly cycle the "base color" through the rainbow
-  EVERY_N_SECONDS( 10 ) { nextPattern(); } // change patterns periodically
+  EVERY_N_SECONDS( 20 ) { nextPattern(); } // change patterns periodically
 
 
 }
@@ -71,6 +71,7 @@ void fadeall(){
 
 
 void cylon(){
+  LEDS.setBrightness(BRIGHTNESS/2);
   static uint8_t hue = 0;
   Serial.print(hue);
   // First slide the led in one direction
@@ -103,6 +104,7 @@ void rainbow()
 
 
 void breathEffect(){
+  LEDS.setBrightness(BRIGHTNESS/2);
   int a = millis();
   byte b = triwave8(a/15);
   byte breath = ease8InOutApprox(b);
