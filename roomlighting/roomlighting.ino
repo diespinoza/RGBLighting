@@ -81,7 +81,7 @@ void cylon(){
     fadeall();
     delay(12);
   }
-  Serial.print("x");
+  //Serial.print("x");
 
   // Now go in the other direction.  
   for(int i = (NUM_LEDS)-1; i >= 0; i--) {
@@ -90,7 +90,7 @@ void cylon(){
     fadeall();
     delay(12);
   }   
-  Serial.println("x");
+  //Serial.println("x");
 }
 
 void rainbow() 
